@@ -9,7 +9,8 @@
 import UIKit
 
 func heightOfLabel(withString: String, ofSize: CGFloat, inWidth: CGFloat) -> CGFloat {
-    let labelFont = UIFont.systemFontOfSize(ofSize)
+    //let labelFont = UIFont.systemFontOfSize(ofSize)
+    let labelFont = UIFont(name: "HelveticaNeue-Light", size: ofSize)!
     let labelSize = (withString as NSString).boundingRectWithSize(CGSizeMake(inWidth, CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: labelFont], context: nil)
     return ceil(labelSize.height)
 }
