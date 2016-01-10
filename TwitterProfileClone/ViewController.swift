@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, SubScrollDelegate 
         let offset = scrollView.contentOffset.y
 
         if offset < 0 {
-            println(offset)
+            print(offset)
             var headerTransform = CATransform3DIdentity
             let headerScaleFactor:CGFloat = -(offset) / headerView.bounds.height
             let headerSizevariation = ((headerView.bounds.height * (1.0 + headerScaleFactor)) - headerView.bounds.height)/2.0
@@ -46,7 +46,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, SubScrollDelegate 
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "embedProfile" {
-            let profileVC = segue.destinationViewController as ProfileViewController
+            let profileVC = segue.destinationViewController as! ProfileViewController
             profileVC.delegate = self
         }
     }

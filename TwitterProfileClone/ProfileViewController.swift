@@ -50,11 +50,11 @@ class ProfileViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 15 + 18 + 8 + heightOfLabel(getUpdate(indexPath).body, 20, self.tableView.frame.width - 30) + 15
+        return 15 + 18 + 8 + heightOfLabel(getUpdate(indexPath).body, ofSize: 20, inWidth: self.tableView.frame.width - 30) + 15
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProfileUpdateCell") as ProfileUpdateCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProfileUpdateCell") as! ProfileUpdateCell
         cell.renderWithUpdate(getUpdate(indexPath))
         return cell
     }
