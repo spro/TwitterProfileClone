@@ -9,21 +9,25 @@
 import UIKit
 
 let min_header: CGFloat = 22
+let bar_offset: CGFloat = 110
 
 class ViewController: UIViewController, UIScrollViewDelegate, SubScrollDelegate {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var barView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        headerView.layer.zPosition = 1
+        containerView.layer.zPosition = 2
+        barView.layer.zPosition = 0
     }
 
     func subScrollViewDidScroll(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
 
         if offset < 0 {
-            print(offset)
             var headerTransform = CATransform3DIdentity
             let headerScaleFactor:CGFloat = -(offset) / headerView.bounds.height
             let headerSizevariation = ((headerView.bounds.height * (1.0 + headerScaleFactor)) - headerView.bounds.height)/2.0
@@ -39,9 +43,18 @@ class ViewController: UIViewController, UIScrollViewDelegate, SubScrollDelegate 
         if (headerView.bounds.height-min_header) < offset {
             headerView.layer.zPosition = 3
         } else {
-            containerView.layer.zPosition = 1
             headerView.layer.zPosition = 0
         }
+
+        if (headerView.bounds.height-min_header+bar_offset) < offset {
+            barView.layer.zPosition = 3
+        } else {
+            barView.layer.zPosition = 1
+        }
+
+        var barTransform = CATransform3DIdentity
+        barTransform = CATransform3DTranslate(barTransform, 0, max(-(headerView.bounds.height-min_header+bar_offset), -offset), 0)
+        barView.layer.transform = barTransform
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -29,27 +29,51 @@
                                     <segue destination="Q1f-3U-IMx" kind="embed" identifier="embedProfile" id="FZN-D6-LDv"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asK-Ns-kEV">
+                                <rect key="frame" x="0.0" y="260" width="320" height="40"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aYM-2y-wSq">
+                                        <rect key="frame" x="8" y="6" width="304" height="29"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                            <segment title="Three"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="aYM-2y-wSq" firstAttribute="top" secondItem="asK-Ns-kEV" secondAttribute="top" constant="6" id="hYI-Yg-af2"/>
+                                    <constraint firstAttribute="trailing" secondItem="aYM-2y-wSq" secondAttribute="trailing" constant="8" id="hau-9H-qZa"/>
+                                    <constraint firstItem="aYM-2y-wSq" firstAttribute="leading" secondItem="asK-Ns-kEV" secondAttribute="leading" constant="8" id="hks-kE-PtV"/>
+                                    <constraint firstAttribute="bottom" secondItem="aYM-2y-wSq" secondAttribute="bottom" constant="6" id="vCr-D8-a5n"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.94600637335526316" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jZX-JE-zOf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Exk-Eq-ozQ"/>
+                            <constraint firstAttribute="trailing" secondItem="asK-Ns-kEV" secondAttribute="trailing" id="KjN-qz-u65"/>
                             <constraint firstAttribute="trailing" secondItem="jZX-JE-zOf" secondAttribute="trailing" id="RFe-Hc-Gud"/>
                             <constraint firstItem="alm-Dz-Hk8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TAH-Qg-3K5"/>
                             <constraint firstItem="jZX-JE-zOf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TXS-E3-QFp"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jZX-JE-zOf" secondAttribute="bottom" id="XZ3-8a-jBr"/>
                             <constraint firstItem="alm-Dz-Hk8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bKc-vW-62w"/>
+                            <constraint firstItem="asK-Ns-kEV" firstAttribute="top" secondItem="alm-Dz-Hk8" secondAttribute="bottom" constant="110" id="gmL-hb-Pmq"/>
+                            <constraint firstItem="asK-Ns-kEV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jQC-oJ-Qeu"/>
                             <constraint firstAttribute="trailing" secondItem="alm-Dz-Hk8" secondAttribute="trailing" id="s2N-FZ-Z4x"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="barView" destination="asK-Ns-kEV" id="71y-C8-30v"/>
                         <outlet property="containerView" destination="jZX-JE-zOf" id="Xe4-Q0-H9j"/>
                         <outlet property="headerView" destination="alm-Dz-Hk8" id="lLr-HF-YxV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144" y="664"/>
+            <point key="canvasLocation" x="144" y="662"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="p4u-yx-yFu">
@@ -60,7 +84,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Q92-Wo-01R">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEk-8p-L3c">
@@ -121,8 +145,10 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileUpdateCell" rowHeight="80" id="3xd-x8-eMj" customClass="ProfileUpdateCell" customModule="TwitterProfileClone" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="322" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3xd-x8-eMj" id="VjX-pc-vNk">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bj0-bi-jXC">
