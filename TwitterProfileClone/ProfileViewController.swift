@@ -35,6 +35,12 @@ class ProfileViewController: UITableViewController {
         ProfileUpdate(name: "@iamusername", body: "just got back from Coleston valley. Sucks but they have chep vidoe games"),
     ]
 
+    @IBAction func addRow() {
+        let new_item = ProfileUpdate(name: "@iamusername", body: "it's about time I had a new update here")
+        self.items.insert(new_item, atIndex: 0)
+        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)] , withRowAnimation: .None)
+    }
+
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         self.delegate.subScrollViewDidScroll(scrollView)
     }
