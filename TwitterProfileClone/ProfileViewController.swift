@@ -37,12 +37,12 @@ class ProfileViewController: UITableViewController {
 
     @IBAction func addRow() {
         let new_item = ProfileUpdate(name: "@iamusername", body: "it's about time I had a new update here")
-        self.items.insert(new_item, atIndex: 0)
-        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)] , withRowAnimation: .None)
+      self.items.insert(new_item, at: 0)
+      self.tableView.insertRows(at: [NSIndexPath(row: 0, section: 0) as IndexPath] , with: .none)
     }
 
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.delegate.subScrollViewDidScroll(scrollView)
+  override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    self.delegate.subScrollViewDidScroll(scrollView: scrollView)
     }
 
     func getUpdate(indexPath: NSIndexPath) -> ProfileUpdate {
@@ -51,19 +51,19 @@ class ProfileViewController: UITableViewController {
 
     // Table methods
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 15 + 18 + 8 + heightOfLabel(getUpdate(indexPath).body, ofSize: 20, inWidth: self.tableView.frame.width - 30) + 15
-    }
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 15 + 18 + 8 + heightOfLabel(withString: getUpdate(indexPath: indexPath as NSIndexPath).body, ofSize: 20, inWidth: self.tableView.frame.width - 30) + 15
+  }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProfileUpdateCell") as! ProfileUpdateCell
-        cell.renderWithUpdate(getUpdate(indexPath))
-        return cell
-    }
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileUpdateCell") as! ProfileUpdateCell
+    cell.renderWithUpdate(update: getUpdate(indexPath: indexPath as NSIndexPath))
+      return cell
+  }
 
 }
 
