@@ -18,7 +18,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, SubScrollDelegate 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
+      UIApplication.shared.statusBarStyle = .lightContent
         headerView.layer.zPosition = 1
         containerView.layer.zPosition = 2
         barView.layer.zPosition = 0
@@ -57,9 +57,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, SubScrollDelegate 
         barView.layer.transform = barTransform
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "embedProfile" {
-            let profileVC = segue.destinationViewController as! ProfileViewController
+          let profileVC = segue.destination as! ProfileViewController
             profileVC.delegate = self
         }
     }
